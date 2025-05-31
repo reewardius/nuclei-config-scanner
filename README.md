@@ -15,7 +15,7 @@ nuclei -l alive_http_services.txt -tags config,exposure -es unknown -rl 500 -c 2
 ```
 #### Filter Out Targets Behind WAF and Run Configuration Scanning
 ```bash
-cdncheck -i subs.txt -fwaf -resp -o no_waf.txt
+cdncheck -i subs.txt -fwaf cloudflare,incapsula,imperva,asm -o no_waf.txt
 nuclei -l no_waf.txt -tags config,exposure -rl 500 -c 200 -o nowaf-nuclei-config.txt
 ```
 4. **cdncheck**: Identifies subdomains not protected by a WAF/CDN using response analysis and writes the filtered list to `no_waf.txt`.
